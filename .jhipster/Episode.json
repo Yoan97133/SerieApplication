@@ -12,7 +12,7 @@
   ],
   "relationships": [
     {
-      "relationshipType": "one-to-many",
+      "relationshipType": "many-to-one",
       "otherEntityName": "saison",
       "otherEntityRelationshipName": "episode",
       "relationshipName": "saison"

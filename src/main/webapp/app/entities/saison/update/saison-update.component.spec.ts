@@ -8,8 +8,8 @@ import { of, Subject, from } from 'rxjs';
 
 import { SaisonService } from '../service/saison.service';
 import { ISaison, Saison } from '../saison.model';
-import { IEpisode } from 'app/entities/episode/episode.model';
-import { EpisodeService } from 'app/entities/episode/service/episode.service';
+import { ISerie } from 'app/entities/serie/serie.model';
+import { SerieService } from 'app/entities/serie/service/serie.service';
 
 import { SaisonUpdateComponent } from './saison-update.component';
 
@@ -18,7 +18,7 @@ describe('Saison Management Update Component', () => {
   let fixture: ComponentFixture<SaisonUpdateComponent>;
   let activatedRoute: ActivatedRoute;
   let saisonService: SaisonService;
-  let episodeService: EpisodeService;
+  let serieService: SerieService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -40,41 +40,41 @@ describe('Saison Management Update Component', () => {
     fixture = TestBed.createComponent(SaisonUpdateComponent);
     activatedRoute = TestBed.inject(ActivatedRoute);
     saisonService = TestBed.inject(SaisonService);
-    episodeService = TestBed.inject(EpisodeService);
+    serieService = TestBed.inject(SerieService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call Episode query and add missing value', () => {
+    it('Should call Serie query and add missing value', () => {
       const saison: ISaison = { id: 456 };
-      const episode: IEpisode = { id: 7297 };
-      saison.episode = episode;
+      const serie: ISerie = { id: 10985 };
+      saison.serie = serie;
 
-      const episodeCollection: IEpisode[] = [{ id: 92810 }];
-      jest.spyOn(episodeService, 'query').mockReturnValue(of(new HttpResponse({ body: episodeCollection })));
-      const additionalEpisodes = [episode];
-      const expectedCollection: IEpisode[] = [...additionalEpisodes, ...episodeCollection];
-      jest.spyOn(episodeService, 'addEpisodeToCollectionIfMissing').mockReturnValue(expectedCollection);
+      const serieCollection: ISerie[] = [{ id: 83450 }];
+      jest.spyOn(serieService, 'query').mockReturnValue(of(new HttpResponse({ body: serieCollection })));
+      const additionalSeries = [serie];
+      const expectedCollection: ISerie[] = [...additionalSeries, ...serieCollection];
+      jest.spyOn(serieService, 'addSerieToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ saison });
       comp.ngOnInit();
 
-      expect(episodeService.query).toHaveBeenCalled();
-      expect(episodeService.addEpisodeToCollectionIfMissing).toHaveBeenCalledWith(episodeCollection, ...additionalEpisodes);
-      expect(comp.episodesSharedCollection).toEqual(expectedCollection);
+      expect(serieService.query).toHaveBeenCalled();
+      expect(serieService.addSerieToCollectionIfMissing).toHaveBeenCalledWith(serieCollection, ...additionalSeries);
+      expect(comp.seriesSharedCollection).toEqual(expectedCollection);
     });
 
     it('Should update editForm', () => {
       const saison: ISaison = { id: 456 };
-      const episode: IEpisode = { id: 99624 };
-      saison.episode = episode;
+      const serie: ISerie = { id: 87785 };
+      saison.serie = serie;
 
       activatedRoute.data = of({ saison });
       comp.ngOnInit();
 
       expect(comp.editForm.value).toEqual(expect.objectContaining(saison));
-      expect(comp.episodesSharedCollection).toContain(episode);
+      expect(comp.seriesSharedCollection).toContain(serie);
     });
   });
 
@@ -143,10 +143,10 @@ describe('Saison Management Update Component', () => {
   });
 
   describe('Tracking relationships identifiers', () => {
-    describe('trackEpisodeById', () => {
-      it('Should return tracked Episode primary key', () => {
+    describe('trackSerieById', () => {
+      it('Should return tracked Serie primary key', () => {
         const entity = { id: 123 };
-        const trackResult = comp.trackEpisodeById(0, entity);
+        const trackResult = comp.trackSerieById(0, entity);
         expect(trackResult).toEqual(entity.id);
       });
     });

@@ -35,6 +35,7 @@
           <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
           <th scope="col"><span jhiTranslate="serieApplicationApp.episode.name">Name</span></th>
           <th scope="col"><span jhiTranslate="serieApplicationApp.episode.number">Number</span></th>
+          <th scope="col"><span jhiTranslate="serieApplicationApp.episode.saison">Saison</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -45,6 +46,11 @@
           </td>
           <td>{{ episode.name }}</td>
           <td>{{ episode.number }}</td>
+          <td>
+            <div *ngIf="episode.saison">
+              <a [routerLink]="['/saison', episode.saison?.id, 'view']">{{ episode.saison?.id }}</a>
+            </div>
+          </td>
           <td class="text-right">
             <div class="btn-group">
               <button

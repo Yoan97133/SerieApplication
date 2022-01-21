@@ -18,12 +18,6 @@
         <dd>
           <span>{{ serie.name }}</span>
         </dd>
-        <dt><span jhiTranslate="serieApplicationApp.serie.saison">Saison</span></dt>
-        <dd>
-          <div *ngIf="serie.saison">
-            <a [routerLink]="['/saison', serie.saison?.id, 'view']">{{ serie.saison?.id }}</a>
-          </div>
-        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

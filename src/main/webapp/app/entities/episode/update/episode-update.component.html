@@ -22,6 +22,19 @@
           <label class="form-control-label" jhiTranslate="serieApplicationApp.episode.number" for="field_number">Number</label>
           <input type="number" class="form-control" name="number" id="field_number" data-cy="number" formControlName="number" />
         </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="serieApplicationApp.episode.saison" for="field_saison">Saison</label>
+          <select class="form-control" id="field_saison" data-cy="saison" name="saison" formControlName="saison">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="saisonOption.id === editForm.get('saison')!.value?.id ? editForm.get('saison')!.value : saisonOption"
+              *ngFor="let saisonOption of saisonsSharedCollection; trackBy: trackSaisonById"
+            >
+              {{ saisonOption.id }}
+            </option>
+          </select>
+        </div>
       </div>
 
       <div>

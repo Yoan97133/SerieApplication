@@ -4,11 +4,11 @@ export interface IEpisode {
   id?: number;
   name?: string | null;
   number?: number | null;
-  saisons?: ISaison[] | null;
+  saison?: ISaison | null;
 }
 
 export class Episode implements IEpisode {
-  constructor(public id?: number, public name?: string | null, public number?: number | null, public saisons?: ISaison[] | null) {}
+  constructor(public id?: number, public name?: string | null, public number?: number | null, public saison?: ISaison | null) {}
 }
 
 export function getEpisodeIdentifier(episode: IEpisode): number | undefined {

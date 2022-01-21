@@ -17,7 +17,7 @@
             <column name="number" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="episode_id" type="bigint">
+            <column name="serie_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->

@@ -3,12 +3,10 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize, map } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 
 import { ISerie, Serie } from '../serie.model';
 import { SerieService } from '../service/serie.service';
-import { ISaison } from 'app/entities/saison/saison.model';
-import { SaisonService } from 'app/entities/saison/service/saison.service';
 
 @Component({
   selector: 'jhi-serie-update',
@@ -17,26 +15,16 @@ import { SaisonService } from 'app/entities/saison/service/saison.service';
 export class SerieUpdateComponent implements OnInit {
   isSaving = false;
 
-  saisonsSharedCollection: ISaison[] = [];
-
   editForm = this.fb.group({
     id: [],
     name: [],
-    saison: [],
   });
 
-  constructor(
-    protected serieService: SerieService,
-    protected saisonService: SaisonService,
-    protected activatedRoute: ActivatedRoute,
-    protected fb: FormBuilder
-  ) {}
+  constructor(protected serieService: SerieService, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ serie }) => {
       this.updateForm(serie);
-
-      this.loadRelationshipsOptions();
     });
   }
 
@@ -52,10 +40,6 @@ export class SerieUpdateComponent implements OnInit {
     } else {
       this.subscribeToSaveResponse(this.serieService.create(serie));
     }
-  }
-
-  trackSaisonById(index: number, item: ISaison): number {
-    return item.id!;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ISerie>>): void {
@@ -81,18 +65,7 @@ export class SerieUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: serie.id,
       name: serie.name,
-      saison: serie.saison,
     });
-
-    this.saisonsSharedCollection = this.saisonService.addSaisonToCollectionIfMissing(this.saisonsSharedCollection, serie.saison);
-  }
-
-  protected loadRelationshipsOptions(): void {
-    this.saisonService
-      .query()
-      .pipe(map((res: HttpResponse<ISaison[]>) => res.body ?? []))
-      .pipe(map((saisons: ISaison[]) => this.saisonService.addSaisonToCollectionIfMissing(saisons, this.editForm.get('saison')!.value)))
-      .subscribe((saisons: ISaison[]) => (this.saisonsSharedCollection = saisons));
   }
 
   protected createFromForm(): ISerie {
@@ -100,7 +73,6 @@ export class SerieUpdateComponent implements OnInit {
       ...new Serie(),
       id: this.editForm.get(['id'])!.value,
       name: this.editForm.get(['name'])!.value,
-      saison: this.editForm.get(['saison'])!.value,
     };
   }
 }
