@@ -1,0 +1,33 @@
+{
+  "name": "Saison",
+  "fields": [
+    {
+      "fieldName": "number",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "serie",
+      "otherEntityRelationshipName": "saison",
+      "relationshipName": "serie"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "episode",
+      "otherEntityRelationshipName": "saison",
+      "relationshipName": "episode"
+    }
+  ],
+  "entityTableName": "saison",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220121125902"
+}

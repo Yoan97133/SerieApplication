@@ -1,0 +1,25 @@
+{
+  "serieApplicationApp": {
+    "serie": {
+      "home": {
+        "title": "Series",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Serie",
+        "createOrEditLabel": "Create or edit a Serie",
+        "notFound": "No Series found"
+      },
+      "created": "A new Serie is created with identifier {{ param }}",
+      "updated": "A Serie is updated with identifier {{ param }}",
+      "deleted": "A Serie is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Serie {{ id }}?"
+      },
+      "detail": {
+        "title": "Serie"
+      },
+      "id": "ID",
+      "name": "Name",
+      "saison": "Saison"
+    }
+  }
+}

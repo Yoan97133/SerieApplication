@@ -42,7 +42,9 @@
     "clientTheme": "none",
     "clientThemeVariant": "",
     "reactive": false,
-    "enableGradleEnterprise": false
+    "enableGradleEnterprise": false,
+    "entities": ["Serie", "Saison", "Episode"],
+    "lastLiquibaseTimestamp": 1642769943000
   },
   "git-provider": "GitHub",
   "git-company": "Yoan97133",

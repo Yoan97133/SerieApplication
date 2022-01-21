@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="saison">
+      <h2 data-cy="saisonDetailsHeading"><span jhiTranslate="serieApplicationApp.saison.detail.title">Saison</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ saison.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="serieApplicationApp.saison.number">Number</span></dt>
+        <dd>
+          <span>{{ saison.number }}</span>
+        </dd>
+        <dt><span jhiTranslate="serieApplicationApp.saison.episode">Episode</span></dt>
+        <dd>
+          <div *ngIf="saison.episode">
+            <a [routerLink]="['/episode', saison.episode?.id, 'view']">{{ saison.episode?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/saison', saison.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
