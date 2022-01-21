@@ -1,0 +1,25 @@
+
+
+entity Serie {
+	name String
+}
+
+entity Saison {
+	number Integer
+}
+
+entity Episode {
+	name String,
+    number Integer
+}
+
+relationship OneToMany {
+	Saison{serie} to Serie
+}
+
+relationship OneToMany {
+	Episode{saison} to Saison
+
+}
+
+

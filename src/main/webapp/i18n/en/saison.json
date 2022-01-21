@@ -1,0 +1,26 @@
+{
+  "serieApplicationApp": {
+    "saison": {
+      "home": {
+        "title": "Saisons",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Saison",
+        "createOrEditLabel": "Create or edit a Saison",
+        "notFound": "No Saisons found"
+      },
+      "created": "A new Saison is created with identifier {{ param }}",
+      "updated": "A Saison is updated with identifier {{ param }}",
+      "deleted": "A Saison is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Saison {{ id }}?"
+      },
+      "detail": {
+        "title": "Saison"
+      },
+      "id": "ID",
+      "number": "Number",
+      "serie": "Serie",
+      "episode": "Episode"
+    }
+  }
+}

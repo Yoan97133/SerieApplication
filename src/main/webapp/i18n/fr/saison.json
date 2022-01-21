@@ -1,0 +1,26 @@
+{
+  "serieApplicationApp": {
+    "saison": {
+      "home": {
+        "title": "Saisons",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Saison",
+        "createOrEditLabel": "Créer ou éditer un Saison",
+        "notFound": "Aucun Saison trouvé"
+      },
+      "created": "Un nouveau Saison a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Saison avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Saison avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Saison {{ id }} ?"
+      },
+      "detail": {
+        "title": "Saison"
+      },
+      "id": "ID",
+      "number": "Number",
+      "serie": "Serie",
+      "episode": "Episode"
+    }
+  }
+}

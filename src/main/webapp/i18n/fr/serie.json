@@ -1,0 +1,25 @@
+{
+  "serieApplicationApp": {
+    "serie": {
+      "home": {
+        "title": "Series",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Serie",
+        "createOrEditLabel": "Créer ou éditer un Serie",
+        "notFound": "Aucun Serie trouvé"
+      },
+      "created": "Un nouveau Serie a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Serie avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Serie avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Serie {{ id }} ?"
+      },
+      "detail": {
+        "title": "Serie"
+      },
+      "id": "ID",
+      "name": "Name",
+      "saison": "Saison"
+    }
+  }
+}
