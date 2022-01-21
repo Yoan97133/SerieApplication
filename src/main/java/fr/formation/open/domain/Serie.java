@@ -2,6 +2,8 @@ package fr.formation.open.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 
 /**
@@ -21,9 +23,9 @@ public class Serie implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JsonIgnoreProperties(value = { "series", "episode" }, allowSetters = true)
-    private Saison saison;
+    @OneToMany(mappedBy = "serie")
+    @JsonIgnoreProperties(value = { "episodes", "serie" }, allowSetters = true)
+    private Set<Saison> saisons = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -53,16 +55,34 @@ public class Serie implements Serializable {
         this.name = name;
     }
 
-    public Saison getSaison() {
-        return this.saison;
+    public Set<Saison> getSaisons() {
+        return this.saisons;
     }
 
-    public void setSaison(Saison saison) {
-        this.saison = saison;
+    public void setSaisons(Set<Saison> saisons) {
+        if (this.saisons != null) {
+            this.saisons.forEach(i -> i.setSerie(null));
+        }
+        if (saisons != null) {
+            saisons.forEach(i -> i.setSerie(this));
+        }
+        this.saisons = saisons;
     }
 
-    public Serie saison(Saison saison) {
-        this.setSaison(saison);
+    public Serie saisons(Set<Saison> saisons) {
+        this.setSaisons(saisons);
+        return this;
+    }
+
+    public Serie addSaison(Saison saison) {
+        this.saisons.add(saison);
+        saison.setSerie(this);
+        return this;
+    }
+
+    public Serie removeSaison(Saison saison) {
+        this.saisons.remove(saison);
+        saison.setSerie(null);
         return this;
     }
 

@@ -9,15 +9,15 @@
   "relationships": [
     {
       "relationshipType": "one-to-many",
-      "otherEntityName": "serie",
-      "otherEntityRelationshipName": "saison",
-      "relationshipName": "serie"
-    },
-    {
-      "relationshipType": "many-to-one",
       "otherEntityName": "episode",
       "otherEntityRelationshipName": "saison",
       "relationshipName": "episode"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "serie",
+      "otherEntityRelationshipName": "saison",
+      "relationshipName": "serie"
     }
   ],
   "entityTableName": "saison",

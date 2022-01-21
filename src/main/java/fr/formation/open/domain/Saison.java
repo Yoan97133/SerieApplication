@@ -25,11 +25,11 @@ public class Saison implements Serializable {
 
     @OneToMany(mappedBy = "saison")
     @JsonIgnoreProperties(value = { "saison" }, allowSetters = true)
-    private Set<Serie> series = new HashSet<>();
+    private Set<Episode> episodes = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties(value = { "saisons" }, allowSetters = true)
-    private Episode episode;
+    private Serie serie;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -59,47 +59,47 @@ public class Saison implements Serializable {
         this.number = number;
     }
 
-    public Set<Serie> getSeries() {
-        return this.series;
+    public Set<Episode> getEpisodes() {
+        return this.episodes;
     }
 
-    public void setSeries(Set<Serie> series) {
-        if (this.series != null) {
-            this.series.forEach(i -> i.setSaison(null));
+    public void setEpisodes(Set<Episode> episodes) {
+        if (this.episodes != null) {
+            this.episodes.forEach(i -> i.setSaison(null));
         }
-        if (series != null) {
-            series.forEach(i -> i.setSaison(this));
+        if (episodes != null) {
+            episodes.forEach(i -> i.setSaison(this));
         }
-        this.series = series;
+        this.episodes = episodes;
     }
 
-    public Saison series(Set<Serie> series) {
-        this.setSeries(series);
+    public Saison episodes(Set<Episode> episodes) {
+        this.setEpisodes(episodes);
         return this;
     }
 
-    public Saison addSerie(Serie serie) {
-        this.series.add(serie);
-        serie.setSaison(this);
+    public Saison addEpisode(Episode episode) {
+        this.episodes.add(episode);
+        episode.setSaison(this);
         return this;
     }
 
-    public Saison removeSerie(Serie serie) {
-        this.series.remove(serie);
-        serie.setSaison(null);
+    public Saison removeEpisode(Episode episode) {
+        this.episodes.remove(episode);
+        episode.setSaison(null);
         return this;
     }
 
-    public Episode getEpisode() {
-        return this.episode;
+    public Serie getSerie() {
+        return this.serie;
     }
 
-    public void setEpisode(Episode episode) {
-        this.episode = episode;
+    public void setSerie(Serie serie) {
+        this.serie = serie;
     }
 
-    public Saison episode(Episode episode) {
-        this.setEpisode(episode);
+    public Saison serie(Serie serie) {
+        this.setSerie(serie);
         return this;
     }
 

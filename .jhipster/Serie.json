@@ -8,7 +8,7 @@
   ],
   "relationships": [
     {
-      "relationshipType": "many-to-one",
+      "relationshipType": "one-to-many",
       "otherEntityName": "saison",
       "otherEntityRelationshipName": "serie",
       "relationshipName": "saison"
